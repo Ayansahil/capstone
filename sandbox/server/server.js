@@ -1,6 +1,8 @@
 import app from './src/app.js';
 
-app.listen(3000,()=>{
-    console.log("sandbox server is running on port 3000");
-    
-})
+const HOST = '0.0.0.0';
+const PORT = Number(process.env.PORT) || 3000;
+
+app.listen(PORT, HOST, () => {
+    console.log(`sandbox server is running on http://${HOST}:${PORT}`);
+});
