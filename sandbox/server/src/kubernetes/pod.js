@@ -1,6 +1,6 @@
 import { k8sCoreV1Api } from "./config.js";
 
-export async function creatPod(sandboxId) {
+export async function createPod(sandboxId) {
 
   const podManifest = {
     metadata: {
@@ -12,7 +12,7 @@ export async function creatPod(sandboxId) {
     spec: {
       containers: [
         {
-          image: "329599656829.dkr.ecr.ap-southeast-1.amazonaws.com/template",
+          image: "template:latest",
           imagePullPolicy: "IfNotPresent",
           name: "sandbox-container",
           ports: [{ containerPort: 5173, name: "http" }],
@@ -25,7 +25,7 @@ export async function creatPod(sandboxId) {
     },
   };
 
-  const response = await k8sCoreV1Api.creatNamespacedPod({
+  const response = await k8sCoreV1Api.createNamespacedPod({
     namespace :'default',
     body: podManifest
   }) 
